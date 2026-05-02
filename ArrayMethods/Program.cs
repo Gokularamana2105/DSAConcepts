@@ -13,6 +13,7 @@ namespace ArrayMethods
             int[] prices = { 7, 1, 5, 3, 6, 4 };
             int result=MaxProfit(prices);
             Console.WriteLine(result);
+            Console.WriteLine("Learning");
             Console.ReadLine();
         }
 
