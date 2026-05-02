@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z_Algorithm", "..\Z_Algorit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateTargetArrayGivenOrder", "..\CreateTargetArrayGivenOrder\CreateTargetArrayGivenOrder.csproj", "{708960BE-4B8A-422C-9655-D1211D8055DD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hashing_Matrix", "Hashing_Matrix", "{7B46A6FE-D1AB-40B9-A894-8446CFAFD425}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary", "..\Dictionary\Dictionary.csproj", "{8867C7C6-7CFF-46EB-B2B9-B4D8E73B5FA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +101,10 @@ Global
 		{708960BE-4B8A-422C-9655-D1211D8055DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{708960BE-4B8A-422C-9655-D1211D8055DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{708960BE-4B8A-422C-9655-D1211D8055DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8867C7C6-7CFF-46EB-B2B9-B4D8E73B5FA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8867C7C6-7CFF-46EB-B2B9-B4D8E73B5FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8867C7C6-7CFF-46EB-B2B9-B4D8E73B5FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8867C7C6-7CFF-46EB-B2B9-B4D8E73B5FA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,6 +124,7 @@ Global
 		{B6299256-AA0E-4891-A94C-6D3CBC31615B} = {38D718C4-7D76-418A-9F36-261DCD298DE7}
 		{A0D94491-0E1B-4A4B-BB1C-C3BFA4D76281} = {38D718C4-7D76-418A-9F36-261DCD298DE7}
 		{708960BE-4B8A-422C-9655-D1211D8055DD} = {A205E610-DC73-40EA-B42B-40DFCA526790}
+		{8867C7C6-7CFF-46EB-B2B9-B4D8E73B5FA8} = {7B46A6FE-D1AB-40B9-A894-8446CFAFD425}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29361E67-D8DC-4BD2-8E01-80D04EDD8694}
