@@ -21,7 +21,7 @@ namespace PatternMatching
             Console.WriteLine(resultThree);
 
             //DNA Sequence
-            string s = "AAAAAAAAAAA";
+            string s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
             IList<string> list=FindRepeatedDnaSequences(s);
             Console.WriteLine(string.Join(" ", list));
 
@@ -60,24 +60,68 @@ namespace PatternMatching
 
         static int NaivePatternMatching(string text,string pattern)
         {
-            if(text.Length < pattern.Length)
+            if (text.Length < pattern.Length)
             {
                 return -1;
             }
-            int n=text.Length;
-            int m=pattern.Length;
-         
-            for(int i = 0; i <= n - m; i++)
+            int n = text.Length;
+            int m = pattern.Length;
+
+            //for(int i = 0; i <= n - m; i++)
+            //{
+            //    int j;
+            //    for (j=0; j<m; j++)
+            //    {
+            //        if (text[i + j]!= pattern[j])
+            //        {
+            //            break;
+            //        }
+            //    }
+            //    if (j == m)
+            //    {
+            //        return i;
+            //    }
+            //}
+            //return -1;
+
+            //if(text.Length<pattern.Length)
+            //{
+            //    return -1;
+            //}
+            //int i = 0;
+            //int j = 0;
+            //while (i < text.Length)
+            //{
+
+            //    if (text[i] == pattern[j])
+            //    {
+            //        i++;
+            //        j++;
+            //    }
+            //    else
+            //    {
+            //        i = i - j + 1;
+            //        j = 0;
+            //    }
+            //    if (j == pattern.Length)
+            //    {
+            //        return i-j;
+            //    }
+            //}
+            //return -1;
+
+            for (int i = 0; i <= n - m; i++)
             {
                 int j;
-                for (j=0; j<m; j++)
+                for (j = 0; j < m; j++)
                 {
-                    if (text[i + j]!= pattern[j])
+                    if (text[i+j] != pattern[j])
                     {
                         break;
                     }
+
                 }
-                if (j == m)
+                if (j == n)
                 {
                     return i;
                 }
@@ -158,19 +202,21 @@ namespace PatternMatching
 
         public static IList<string> FindRepeatedDnaSequences(string s)
         {
-            List<string> result = new List<string>();   
+            List<string> result = new List<string>();
             int n = s.Length;
 
-            //Pure Naive Approach Without List and HashSet
-            //for(int i = 0; i <= n - 10; i++)
+            ////Pure Naive Approach Without List and HashSet
+            //for (int i = 0; i <= n - 10; i++)
             //{
             //    string substring = s.Substring(i, 10);
 
             //    // Step 1: Check if appears later
-            //    bool foundLater =false;
+            //    bool foundLater = false;
 
-            //    for(int j=i+1;j<=n-10;j++) { 
-            //        if(s.Substring(j, 10) == substring)
+            //    for (int j = i + 1; j <= n - 10; j++)
+            //    {
+            //        string subTwo = s.Substring(j, 10);
+            //        if ( subTwo== substring)
             //        {
             //            foundLater = true;
             //            break;
@@ -181,10 +227,11 @@ namespace PatternMatching
             //        continue;
             //    }
             //    // Step 2: Check if already appeared before
-            //    bool seenBefore =false;
-            //    for(int k = 0; k < i; k++)
+            //    bool seenBefore = false;
+            //    for (int k = 0; k < i; k++)
             //    {
-            //        if(s.Substring(k,10)== substring) { 
+            //        if (s.Substring(k, 10) == substring)
+            //        {
             //            seenBefore = true;
             //            break;
             //        }
@@ -199,71 +246,130 @@ namespace PatternMatching
 
             //using list
 
-            //for(int i = 0; i <= n - 10; i++)
-            //{
-            //    string substring=s.Substring(i, 10);
+            for (int i = 0; i <= n - 10; i++)
+            {
+                string substring = s.Substring(i, 10);
 
-            //    for(int j = i + 1; j <= n - 10; j++)
-            //    {
-            //        string subStringJ=s.Substring(j, 10);
-            //        if(subStringJ == substring)
-            //        {
-            //            if (!result.Contains(substring))
-            //            {
-            //                result.Add(substring);
-            //            }
-            //            break;
-            //        }
-            //    }
-            //}
-            //return result;
+                for (int j = i + 1; j <= n - 10; j++)
+                {
+                    string subStringJ = s.Substring(j, 10);
+                    if (subStringJ == substring)
+                    {
+                        if (!result.Contains(substring))
+                        {
+                            result.Add(substring);
+                        }
+                        break;
+                    }
+                }
+            }
+            return result;
 
 
             //HashSet
-            HashSet<string> seen = new HashSet<string>();   
-            HashSet<string> repeated= new HashSet<string>();
-            for(int i = 0; i <= n - 10; i++)
-            {
-                string substring=s.Substring(i,10);
+            //HashSet<string> seen = new HashSet<string>();   
+            //HashSet<string> repeated= new HashSet<string>();
+            //for(int i = 0; i <= n - 10; i++)
+            //{
+            //    string substring=s.Substring(i,10);
 
-                if (seen.Contains(substring))
-                {
-                    repeated.Add(substring);
-                }
-                else
-                {
-                    seen.Add(substring);
-                }
-            }
-            return new List<string>(repeated);
+            //    if (seen.Contains(substring))
+            //    {
+            //        repeated.Add(substring);
+            //    }
+            //    else
+            //    {
+            //        seen.Add(substring);
+            //    }
+            //}
+            //return new List<string>(repeated);
         }
 
         //Find All Anagrams in a String
         public static IList<int> FindAnagrams(string s,string p)
         {
-            int n = s.Length;
-            int m=p.Length;
-            List<int> result = new List<int>();
-            for(int i = 0; i <= n - m; i++)
+            //int n = s.Length;
+            //int m=p.Length;
+            //List<int> result = new List<int>();
+            //for(int i = 0; i <= n - m; i++)
+            //{
+            //    int[] count = new int[26];
+            //    for (int j = 0; j < m; j++)
+            //    {
+            //        count[s[i + j] - 'a']++;
+            //        count[p[j] - 'a']--;
+            //    }
+            //    bool isAnagram=true;
+            //    for(int x = 0; x < 26; x++)
+            //    {
+            //        if (count[x] != 0)
+            //        {
+            //            isAnagram = false;
+            //            break;
+            //        }
+            //    }
+            //    if (isAnagram)
+            //    {
+            //        result.Add(i);
+            //    }
+            //}
+            //return result;
+
+            //using Dictionary
+            List<int> result= new List<int>();
+            Dictionary<char,int> freq= new Dictionary<char,int>();
+            int m = s.Length;
+            int n = p.Length;
+
+            if (m < n)
             {
-                int[] count = new int[26];
-                for (int j = 0; j < m; j++)
+                return result;
+            }
+
+            foreach(char c in p)
+            {
+                if (freq.ContainsKey(c))
                 {
-                    count[s[i + j] - 'a']++;
-                    count[p[j] - 'a']--;
+                    freq[c]++;
                 }
-                bool isAnagram=true;
-                for(int x = 0; x < 26; x++)
+                else
                 {
-                    if (count[x] != 0)
+                    freq[c] = 1;
+                }
+            }
+            int left=0,right=0,count=p.Length;
+            while (right < m)
+            {
+                char ch = s[right];
+
+                if (freq.ContainsKey(ch))
+                {
+                    if (freq[ch] > 0)
                     {
-                        isAnagram = false;
-                        break;
+                        count--;
                     }
+                    freq[ch]--;
                 }
-                if (isAnagram)
+                right++;
+
+                if (count == 0)
                 {
-                    result.Add(i);
+                    result.Add(left);
+                }
+
+                if (right - left == p.Length)
+                {
+                    char leftChar = s[left];
+                    if (freq.ContainsKey(leftChar))
+                    {
+                        freq[leftChar]++;
+
+                        if (freq[leftChar] > 0)
+                        {
+                            count++;
+                        }
+                    }
+                    left++;
                 }
             }
             return result;
