@@ -224,8 +224,6 @@ namespace Knuth_Morris_Pratt_PatternMatching
                 text += a;
                 count++;
             }
-           
-
             if (KMPSearchBool(text, b))
             {
                 return count;
