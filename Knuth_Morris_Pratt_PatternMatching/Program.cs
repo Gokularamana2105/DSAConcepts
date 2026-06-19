@@ -37,6 +37,7 @@ namespace Knuth_Morris_Pratt_PatternMatching
             string s2 = "banana";
             string resultFour = LongestDupSubstring(s2);
             Console.WriteLine(resultFour);
+            Console.WriteLine();
             Console.ReadLine();
         }
 
@@ -186,6 +187,7 @@ namespace Knuth_Morris_Pratt_PatternMatching
                         i++;
                     }
                 }
+
             }
             return lps;
         }
